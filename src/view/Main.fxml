@@ -40,6 +40,18 @@
       </TitledPane>
       <TabPane layoutY="75.0" prefHeight="651.0" prefWidth="743.0" side="LEFT" tabClosingPolicy="UNAVAILABLE">
         <tabs>
+            <Tab>
+              <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" preserveRatio="true">
+                     <image>
+                        <Image url="@../avatar/home-icon-80046.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
           <Tab closable="false">
           	<graphic>
           		<ImageView fitHeight="30.0" fitWidth="30.0">
