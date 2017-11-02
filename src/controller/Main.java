@@ -8,10 +8,13 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
-
 public class Main extends Application {
 	
 	public AnchorPane layout;
+	
+	/**
+	 * Creates a scene that shows the main interface of the application
+	 */
 	
 	@Override
 	public void start(Stage primaryStage) {
