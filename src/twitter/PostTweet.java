@@ -21,7 +21,7 @@ public class PostTweet
        // The factory instance is re-useable and thread safe.
 	    Twitter twitter = TwitterFactory.getSingleton();
 	    // Gets input from the user of what they want to tweet
-	    String tweet = scan.next(); 
+	    String tweet = scan.nextLine(); 
 	    // Attempt to post a tweet to twitter
 	    try {
 	    	// Post a tweet to your timeline
