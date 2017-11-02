@@ -23,7 +23,7 @@ public class PostTweet {
     		Twitter twitter = TwitterFactory.getSingleton();
     	
     		// Gets input from the user of what they want to tweet
-    		String tweet = scan.next(); 
+    		String tweet = scan.nextLine(); 
     		
     		// Attempt to post a tweet to twitter
     		
