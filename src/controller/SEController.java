@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
@@ -16,38 +15,36 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import twitter.*;
 
-/**
- * 
- * 
- * 
- * @author Brian
- *
- */
 public class SEController 
 {
 	@FXML
 	TabPane SETabPane;
 	@FXML
 	Tab homeTab, twitterTab, facebookTab, redditTab;
+	
 	Stage stage;
+	
 	/**
-	 * 
+	 * onSelect will perform certain actions
+	 * based on what the user clicks on.
 	 * 
 	 * 
 	 * @author Brian Le
 	 */
-	public void update() 
+	public void onSelect() 
 	{
 		
 		// Tab is set to home by default
-		homeTab.setOnSelectionChanged(new EventHandler<Event>() {
+		homeTab.setOnSelectionChanged(new EventHandler<Event>() 
+		{
             @Override
             public void handle(Event t) 
             {
                 if (homeTab.isSelected()) 
                 {
                 	// Attempt to change the view back to the default view
-        			try {
+        			try
+        			{
         				// change back to the home view
         				Parent root = FXMLLoader.load(getClass().getResource("/view/Main.fxml"));
         				Scene scene = new Scene(root,400,400);
@@ -59,8 +56,50 @@ public class SEController
         			catch(Exception e) {
         				e.printStackTrace(); 
         			}
-        			
                 }
+                
+                // If the user selects the twitter tab
+                twitterTab.setOnSelectionChanged(new EventHandler<Event>() 
+                {
+                    @Override
+                    public void handle(Event t)
+                    {
+                    	// The following will be implemented later
+                        if (twitterTab.isSelected()) 
+                        {
+                            System.out.println("twitter");
+                        }
+                    }
+                });
+                
+                // If the user selects facebook
+                facebookTab.setOnSelectionChanged(new EventHandler<Event>() 
+                {
+                    @Override
+                    public void handle(Event t)
+                    {
+                    	// The following will be implemented later
+                        if (facebookTab.isSelected()) 
+                        {
+                            System.out.println("facebook");
+                        }
+                    }
+                });
+                
+                // If the user selects reddit
+                redditTab.setOnSelectionChanged(new EventHandler<Event>() 
+                {
+                    @Override
+                    public void handle(Event t)
+                    {
+                    	// The following will be implemented later
+                        if (redditTab.isSelected()) 
+                        {
+                            System.out.println("reddit");
+                        }
+                    }
+                });
+                
             }
         });
 	}
