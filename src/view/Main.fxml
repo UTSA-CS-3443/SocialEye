@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
@@ -10,7 +14,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="727.0" prefWidth="743.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="727.0" prefWidth="743.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SEController">
    <children>
       <TitledPane animated="false" collapsible="false" layoutX="-2.0" prefHeight="727.0" prefWidth="743.0" text="SocialEye">
         <content>
@@ -38,9 +42,9 @@
             </AnchorPane>
         </content>
       </TitledPane>
-      <TabPane layoutY="75.0" prefHeight="651.0" prefWidth="743.0" side="LEFT" tabClosingPolicy="UNAVAILABLE">
+      <TabPane fx:id="SETabPane" layoutY="75.0" prefHeight="651.0" prefWidth="743.0" side="LEFT" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-            <Tab>
+            <Tab fx:id="homeTab" onSelectionChanged="#update">
               <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" preserveRatio="true">
                      <image>
@@ -52,7 +56,7 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
               </content>
             </Tab>
-          <Tab closable="false">
+          <Tab fx:id="twitterTab" onSelectionChanged="#update">
           	<graphic>
           		<ImageView fitHeight="30.0" fitWidth="30.0">
           			<image>
@@ -64,7 +68,7 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="593.0" prefWidth="714.0" />
             </content>
           </Tab>
-          <Tab closable="false">
+          <Tab fx:id="facebookTab" closable="false" onSelectionChanged="#update">
             <graphic>
               <ImageView fitHeight="30.0" fitWidth="30.0">
                      <image>
@@ -76,7 +80,7 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="478.0" prefWidth="200.0" />
             </content>
           </Tab>
-          <Tab>
+          <Tab fx:id="redditTab" onSelectionChanged="#update">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="674.0" prefWidth="714.0" />
             </content>
