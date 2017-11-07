@@ -87,7 +87,7 @@
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0">
                      <image>
-                        <Image url="@../avatar/reddit.jpg" />
+                        <Image url="@../avatar/redditlogo128px.png" />
                      </image>
                   </ImageView>
                </graphic>
