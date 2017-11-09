@@ -23,7 +23,7 @@ public class Main extends Application {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("/view/Main.fxml"));
 			
-			Scene scene = new Scene(root,400,400);
+			Scene scene = new Scene(root,743,727);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			// Sets the title of the program
