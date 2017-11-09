@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
@@ -53,7 +55,26 @@
                   </ImageView>
                </graphic>
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ScrollPane layoutX="14.0" layoutY="14.0" prefHeight="625.0" prefWidth="458.0">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+                          </content>
+                        </ScrollPane>
+                        <TextFlow fx:id="localTrendsBox" layoutX="488.0" layoutY="60.0" prefHeight="208.0" prefWidth="213.0" />
+                        <TextFlow fx:id="globalTrendsBox" layoutX="488.0" layoutY="317.0" prefHeight="208.0" prefWidth="213.0" />
+                        <Text layoutX="526.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trends For You" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="532.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Global Trends" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Text>
+                     </children></AnchorPane>
               </content>
             </Tab>
           <Tab fx:id="twitterTab" onSelectionChanged="#onSelect">
