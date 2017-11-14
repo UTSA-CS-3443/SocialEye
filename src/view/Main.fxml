@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
 
-<AnchorPane prefHeight="727.0" prefWidth="743.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SEController">
+<AnchorPane prefHeight="727.0" prefWidth="743.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SEController">
    <children>
       <TitledPane animated="false" collapsible="false" layoutX="-2.0" prefHeight="727.0" prefWidth="743.0" text="SocialEye">
         <content>
@@ -52,9 +53,6 @@
                      </image>
                   </ImageView>
                </graphic>
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-              </content>
             </Tab>
           <Tab fx:id="twitterTab" onSelectionChanged="#onSelect">
           	<graphic>
@@ -65,7 +63,30 @@
           		</ImageView>
           	</graphic>
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="593.0" prefWidth="714.0" />
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="593.0" prefWidth="714.0">
+                     <children>
+                        <ScrollPane layoutX="14.0" layoutY="14.0" prefHeight="625.0" prefWidth="458.0">
+                           <content>
+                              <TextArea prefHeight="100.0" prefWidth="457.0" promptText="What's happening?">
+                                 <font>
+                                    <Font name="Helvetica Neue" size="13.0" />
+                                 </font>
+                              </TextArea>
+                           </content>
+                        </ScrollPane>
+                        <TextFlow fx:id="localTrendsBox1" layoutX="483.0" layoutY="63.0" prefHeight="208.0" prefWidth="213.0" />
+                        <TextFlow fx:id="globalTrendsBox1" layoutX="483.0" layoutY="348.0" prefHeight="208.0" prefWidth="213.0" />
+                        <Text layoutX="524.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trends For You" textAlignment="CENTER">
+                           <font>
+                              <Font name="Helvetica Neue Bold" size="18.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="530.0" layoutY="344.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Global Trends" textAlignment="CENTER">
+                           <font>
+                              <Font name="Helvetica Neue Bold" size="18.0" />
+                           </font>
+                        </Text>
+                     </children></AnchorPane>
             </content>
           </Tab>
           <Tab fx:id="facebookTab" closable="false" onSelectionChanged="#onSelect">
