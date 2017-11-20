@@ -1,18 +1,23 @@
 package controller;
 
 import java.io.IOException;
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import reddit.WebViewBrowser;
+import reddit.WebViewBrowser.Browser;
 import twitter.*;
 
 public class SEController 
@@ -21,17 +26,33 @@ public class SEController
 	TabPane SETabPane;
 	@FXML
 	Tab homeTab, twitterTab, facebookTab, redditTab;
-	
+	@FXML
+	Button btnRedditLogin;
 	Stage stage;
+//	Scene scene;
+	/**
+	 * On click on a login button, a new browser will open up to prompt
+	 * the user to login.
+	 * 
+	 * @author Devin Nguyen
+	 */
+	public void onLoginClick() {
+		btnRedditLogin.setOnAction(new EventHandler<ActionEvent>() {
+		    public void handle(ActionEvent event) {
+		    	WebViewBrowser webViewBrowser = new WebViewBrowser();
+		    	webViewBrowser.start(new Stage());
+		    }
+		});
+	}
 	
 	/**
-	 * onSelect will perform certain actions
+	 * onTabSelect will perform certain actions
 	 * based on what the user clicks on.
 	 * 
 	 * 
 	 * @author Brian Le
 	 */
-	public void onSelect() 
+	public void onTabSelect() 
 	{
 		
 		// Tab is set to home by default
@@ -103,4 +124,7 @@ public class SEController
             }
         });
 	}
+	
+
+	
 }
