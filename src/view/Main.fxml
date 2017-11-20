@@ -99,12 +99,31 @@
                   </ImageView>
                </graphic>
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="478.0" prefWidth="200.0" />
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="478.0" prefWidth="200.0">
+                     <children>
+                        <ScrollPane layoutX="23.0" layoutY="14.0" prefHeight="651.0" prefWidth="710.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <content>
+                              <TextArea prefHeight="131.0" prefWidth="709.0" promptText="What's on your mind?">
+                                 <font>
+                                    <Font name="Helvetica Neue" size="16.0" />
+                                 </font>
+                              </TextArea>
+                           </content>
+                        </ScrollPane>
+                     </children></AnchorPane>
             </content>
           </Tab>
           <Tab fx:id="redditTab" onSelectionChanged="#onTabSelect">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="674.0" prefWidth="714.0" />
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="674.0" prefWidth="714.0">
+                     <children>
+                        <ScrollPane layoutX="58.0" layoutY="43.0" prefHeight="608.0" prefWidth="710.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="43.0" />
+                        <Text layoutX="22.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="trending subreddits">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                     </children></AnchorPane>
             </content>
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0">
