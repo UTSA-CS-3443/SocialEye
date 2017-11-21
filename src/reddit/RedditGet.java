@@ -45,7 +45,14 @@ public class RedditGet {
 				+ " (" + jsonObject.getInt("link_karma") 
 				+ " : " + jsonObject.getInt("comment_karma") + ")";
 	}
-	
+	/**
+	 * Get the reddit frontpage of the logged in user
+	 * @param access_token
+	 * @return N/A
+	 * @throws UnsupportedOperationException
+	 * @throws IOException
+	 * @throws JSONException
+	 */
 	public static String frontpage(String access_token) throws UnsupportedOperationException, IOException, JSONException {
 		CloseableHttpClient httpclient = HttpClientBuilder.create().build();
 		HttpGet httpget = new HttpGet("https://oauth.reddit.com/");
