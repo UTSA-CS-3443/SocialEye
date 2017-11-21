@@ -91,11 +91,16 @@
                               <Font name="Helvetica Neue Bold" size="18.0" />
                            </font>
                         </Text>
-                        <TextArea fx:id="postTweet" layoutX="14.0" layoutY="17.0" prefHeight="93.0" prefWidth="463.0" promptText="What's happening?">
+                        <TextArea fx:id="postTweet" layoutX="14.0" layoutY="17.0" prefHeight="64.0" prefWidth="463.0" promptText="What's happening?">
                            <font>
                               <Font name="Helvetica Neue" size="13.0" />
                            </font>
                         </TextArea>
+                        <Button fx:id="btnPostTweet" layoutX="435.0" layoutY="89.0" mnemonicParsing="false" text="Post">
+                           <font>
+                              <Font name="Helvetica Neue" size="12.0" />
+                           </font>
+                        </Button>
                      </children></AnchorPane>
             </content>
           </Tab>

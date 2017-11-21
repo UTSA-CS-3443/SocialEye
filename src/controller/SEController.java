@@ -31,13 +31,13 @@ public class SEController
 	@FXML
 	Tab homeTab, twitterTab, facebookTab, redditTab;
 	@FXML
-	Button btnRedditLogin, btnTwitterLogin;
+	Button btnRedditLogin, btnTwitterLogin, btnPostTweet;
 	Stage stage;
 	@FXML
 	TextFlow localTrendsBox, globalTrendsBox, twitterFeed, redditFeed, facebookFeed;
 	@FXML
 	TextArea postTweet;
-//	Scene scene;
+
 	/**
 	 * On click on a login button, a new browser will open up to prompt
 	 * the user to login.
@@ -47,6 +47,7 @@ public class SEController
 	 * 
 	 * @author Devin Nguyen
 	 */
+	
 	public void onLoginClick() {
 		btnRedditLogin.setOnAction(new EventHandler<ActionEvent>() {
 		    public void handle(ActionEvent event) {
@@ -60,6 +61,25 @@ public class SEController
 			}
 		});
 	}
+	
+	/**
+	 * On click, takes the text from the postTweet TextArea and Tweets it
+	 *
+	 * @author Alex Shi
+	 */
+	
+	/*
+	public void onClick() {
+		btnPostTweet.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				twitter twitter = new twitter();
+				String tweet;
+				tweet = postTweet.getText();
+				System.out.println(tweet);
+				twitter.PostTweet(tweet);
+			}
+		});
+	} /*
 	
 	/**
 	 * onTabSelect will perform certain actions
@@ -110,9 +130,12 @@ public class SEController
                             twitter twitter = new twitter();
                             try
 							{
-                            	//pass the trends box to the twitter
-                            	//object along with location
+                            		// Gets global and local trends
+                            		// 1 is global, 2487796 is hard coded for San Antonio 8)
 								twitter.Top10Trends(globalTrendsBox, 1);
+								twitter.Top10Trends(localTrendsBox, 2487796);
+								// Gets the user's twitter feed
+								twitter.TwitterTL(twitterFeed);
 							} catch (TwitterException e)
 							{
 								// TODO Auto-generated catch block
