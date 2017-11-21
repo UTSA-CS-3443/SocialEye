@@ -39,7 +39,7 @@
                                  <font>
                                     <Font name="Helvetica Neue" size="12.0" />
                                  </font></Button>
-                              <Button fx:id="btnTwitterLogin" mnemonicParsing="false" prefHeight="38.0" prefWidth="87.0" text="Twitter Login">
+                              <Button fx:id="btnTwitterLogin" mnemonicParsing="false" onAction="#onLoginClick" prefHeight="38.0" prefWidth="87.0" text="Twitter Login">
                                  <font>
                                     <Font name="Helvetica Neue" size="12.0" />
                                  </font>

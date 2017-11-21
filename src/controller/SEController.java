@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 
+import SMauthorization.GetAccessToken;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -37,6 +38,9 @@ public class SEController
 	/**
 	 * On click on a login button, a new browser will open up to prompt
 	 * the user to login.
+	 * For Twitter, an external browser will be opened and the user
+	 * will be prompted to authorize the application, then given
+	 * a unique access token
 	 * 
 	 * @author Devin Nguyen
 	 */
@@ -49,7 +53,7 @@ public class SEController
 		});
 		btnTwitterLogin.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
-				// To-do
+				GetAccessToken.login();
 			}
 		});
 	}
