@@ -36,7 +36,12 @@ import org.apache.http.NameValuePair;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.UsernamePasswordCredentials;
 
-
+/**
+ * OAuth2 Authentication for reddits api. No refresh token has been
+ * implemented.
+ * @author Devin Nguyen
+ *
+ */
 public class RedditOAuth {
 	
 	//Send user to auth website; will need to authorize
@@ -80,7 +85,12 @@ public class RedditOAuth {
         // mysubreddits, privatemessages, read, report, save, submit, subscribe, vote, wikiedit, wikiread, etc.
         return url;
 	}
-	
+	/**
+	 * Get the accesstoken from reddit api and return as JSONObject
+	 * @param code
+	 * @return JSONObject that contains various info, including access token
+	 * @throws IOException
+	 */
 	public static JSONObject getToken(String code) throws IOException {
 		System.out.println("getToken for code= " + code);
 		CredentialsProvider credsProvider = new BasicCredentialsProvider();
@@ -141,7 +151,23 @@ public class RedditOAuth {
 	    return jsonObject;
 	}
 	
-	 private static String readAll(Reader rd) throws IOException {
+	/**
+	 * Return access token in string from OAUTH call 
+	 * @param json JSONObject returned from reddit POST request
+	 * @return access token string
+	 * @throws JSONException
+	 */
+	public static String getAccessTokenFromJSONString(JSONObject json) throws JSONException {
+			return json.getString("access_token");
+	}
+	
+	/**
+	 * Method to return a concatenated string given a reader
+	 * @param rd
+	 * @return contents of reader
+	 * @throws IOException
+	 */
+	private static String readAll(Reader rd) throws IOException {
 		    StringBuilder sb = new StringBuilder();
 		    int cp;
 		    while ((cp = rd.read()) != -1) {

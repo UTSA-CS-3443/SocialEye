@@ -10,6 +10,8 @@ import com.sun.media.jfxmedia.logging.Logger;
 
 import java.util.regex.*;
 
+import org.json.JSONException;
+
 import controller.Main;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
@@ -78,8 +80,12 @@ public class Browser extends Region {
 					Matcher matcher = pattern.matcher(RedditOAuth.returnUrl);
 					if(matcher.find()) {
 						try {
-							RedditOAuth.getToken(matcher.group(1));		
-						} catch (IOException e) {
+							RedditGet.access_token = 
+									RedditOAuth.getAccessTokenFromJSONString(
+											RedditOAuth.getToken(matcher.group(1)));		
+							System.out.println(RedditGet.frontpage(RedditGet.access_token));
+							System.out.println(RedditGet.username(RedditGet.access_token));
+						} catch (IOException | JSONException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
