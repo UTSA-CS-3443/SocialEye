@@ -74,13 +74,9 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="593.0" prefWidth="714.0">
                      <children>
-                        <ScrollPane layoutX="14.0" layoutY="14.0" prefHeight="625.0" prefWidth="458.0">
+                        <ScrollPane layoutX="14.0" layoutY="120.0" prefHeight="517.0" prefWidth="462.0">
                            <content>
-                              <TextArea prefHeight="100.0" prefWidth="457.0" promptText="What's happening?">
-                                 <font>
-                                    <Font name="Helvetica Neue" size="13.0" />
-                                 </font>
-                              </TextArea>
+                              <TextFlow fx:id="twitterFeed" prefHeight="499.0" prefWidth="442.0" />
                            </content>
                         </ScrollPane>
                         <TextFlow fx:id="localTrendsBox" layoutX="483.0" layoutY="63.0" prefHeight="208.0" prefWidth="213.0" />
@@ -95,6 +91,11 @@
                               <Font name="Helvetica Neue Bold" size="18.0" />
                            </font>
                         </Text>
+                        <TextArea fx:id="postTweet" layoutX="14.0" layoutY="17.0" prefHeight="93.0" prefWidth="463.0" promptText="What's happening?">
+                           <font>
+                              <Font name="Helvetica Neue" size="13.0" />
+                           </font>
+                        </TextArea>
                      </children></AnchorPane>
             </content>
           </Tab>
@@ -109,15 +110,16 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="478.0" prefWidth="200.0">
                      <children>
-                        <ScrollPane layoutX="23.0" layoutY="14.0" prefHeight="651.0" prefWidth="710.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <ScrollPane layoutX="23.0" layoutY="140.0" prefHeight="511.0" prefWidth="710.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="140.0">
                            <content>
-                              <TextArea prefHeight="131.0" prefWidth="709.0" promptText="What's on your mind?">
-                                 <font>
-                                    <Font name="Helvetica Neue" size="16.0" />
-                                 </font>
-                              </TextArea>
+                              <TextFlow fx:id="facebookFeed" prefHeight="494.0" prefWidth="693.0" />
                            </content>
                         </ScrollPane>
+                        <TextArea prefHeight="139.0" prefWidth="708.0" promptText="What's going on?">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </TextArea>
                      </children></AnchorPane>
             </content>
           </Tab>
@@ -125,7 +127,10 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="674.0" prefWidth="714.0">
                      <children>
-                        <ScrollPane layoutX="58.0" layoutY="43.0" prefHeight="608.0" prefWidth="710.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="43.0" />
+                        <ScrollPane layoutX="58.0" layoutY="43.0" prefHeight="608.0" prefWidth="710.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="43.0">
+                           <content>
+                              <TextFlow fx:id="redditFeed" prefHeight="591.0" prefWidth="690.0" />
+                           </content></ScrollPane>
                         <Text layoutX="22.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="trending subreddits">
                            <font>
                               <Font size="15.0" />

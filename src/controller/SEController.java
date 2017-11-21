@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
@@ -33,7 +34,9 @@ public class SEController
 	Button btnRedditLogin, btnTwitterLogin;
 	Stage stage;
 	@FXML
-	TextFlow localTrendsBox, globalTrendsBox;
+	TextFlow localTrendsBox, globalTrendsBox, twitterFeed, redditFeed, facebookFeed;
+	@FXML
+	TextArea postTweet;
 //	Scene scene;
 	/**
 	 * On click on a login button, a new browser will open up to prompt
