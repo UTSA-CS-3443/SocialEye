@@ -29,7 +29,7 @@ public class SEController
 	@FXML
 	Tab homeTab, twitterTab, facebookTab, redditTab;
 	@FXML
-	Button btnRedditLogin;
+	Button btnRedditLogin, btnTwitterLogin;
 	Stage stage;
 	@FXML
 	TextFlow localTrendsBox, globalTrendsBox;
@@ -43,9 +43,14 @@ public class SEController
 	public void onLoginClick() {
 		btnRedditLogin.setOnAction(new EventHandler<ActionEvent>() {
 		    public void handle(ActionEvent event) {
-		    	WebViewBrowser webViewBrowser = new WebViewBrowser();
-		    	webViewBrowser.start(new Stage());
+		    		WebViewBrowser webViewBrowser = new WebViewBrowser();
+		    		webViewBrowser.start(new Stage());
 		    }
+		});
+		btnTwitterLogin.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				// To-do
+			}
 		});
 	}
 	
@@ -72,7 +77,7 @@ public class SEController
         			{
         				// change back to the home view
         				Parent root = FXMLLoader.load(getClass().getResource("/view/Main.fxml"));
-        				Scene scene = new Scene(root,400,400);
+        				Scene scene = new Scene(root,743,727);
         				scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
         				Main.stage.setScene(scene);
         				Main.stage.show();														  
