@@ -26,7 +26,7 @@ public class GetAccessToken {
 	 * User must have a twitter account in order to access our app
 	 * 
 	 */
-	public static void main(String[] args) {
+	public static void login() {
     	
     	// This will reset the accessToken and accessTokenSecret every time for each user
     	ConfigurationBuilder cb = new ConfigurationBuilder();
@@ -130,8 +130,7 @@ public class GetAccessToken {
                     }
                 }
             }
-            System.out.println("Successfully stored access token to " + file.getAbsolutePath() + ".");
-            System.exit(0);
+            System.out.println("Successfully stored access token to " + file.getAbsolutePath() + "."); 
         } catch (TwitterException te) {
             te.printStackTrace();
             System.out.println("Failed to get accessToken: " + te.getMessage());

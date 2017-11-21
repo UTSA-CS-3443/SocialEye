@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 
+import SMauthorization.GetAccessToken;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -14,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
@@ -29,23 +31,33 @@ public class SEController
 	@FXML
 	Tab homeTab, twitterTab, facebookTab, redditTab;
 	@FXML
-	Button btnRedditLogin;
+	Button btnRedditLogin, btnTwitterLogin;
 	Stage stage;
 	@FXML
-	TextFlow localTrendsBox, globalTrendsBox;
+	TextFlow localTrendsBox, globalTrendsBox, twitterFeed, redditFeed, facebookFeed;
+	@FXML
+	TextArea postTweet;
 //	Scene scene;
 	/**
 	 * On click on a login button, a new browser will open up to prompt
 	 * the user to login.
+	 * For Twitter, an external browser will be opened and the user
+	 * will be prompted to authorize the application, then given
+	 * a unique access token
 	 * 
 	 * @author Devin Nguyen
 	 */
 	public void onLoginClick() {
 		btnRedditLogin.setOnAction(new EventHandler<ActionEvent>() {
 		    public void handle(ActionEvent event) {
-		    	WebViewBrowser webViewBrowser = new WebViewBrowser();
-		    	webViewBrowser.start(new Stage());
+		    		WebViewBrowser webViewBrowser = new WebViewBrowser();
+		    		webViewBrowser.start(new Stage());
 		    }
+		});
+		btnTwitterLogin.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				GetAccessToken.login();
+			}
 		});
 	}
 	
@@ -72,7 +84,7 @@ public class SEController
         			{
         				// change back to the home view
         				Parent root = FXMLLoader.load(getClass().getResource("/view/Main.fxml"));
-        				Scene scene = new Scene(root,400,400);
+        				Scene scene = new Scene(root,743,727);
         				scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
         				Main.stage.setScene(scene);
         				Main.stage.show();														  
