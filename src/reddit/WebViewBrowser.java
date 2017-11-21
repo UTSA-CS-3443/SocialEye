@@ -6,7 +6,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 
-import com.sun.javafx.webkit.WebConsoleListener;
 import com.sun.media.jfxmedia.logging.Logger;
 
 import java.util.regex.*;

@@ -15,10 +15,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.image.Image;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import reddit.WebViewBrowser;
 import reddit.WebViewBrowser.Browser;
 import twitter.*;
+import twitter4j.TwitterException;
 
 public class SEController 
 {
@@ -29,6 +31,8 @@ public class SEController
 	@FXML
 	Button btnRedditLogin;
 	Stage stage;
+	@FXML
+	TextFlow localTrendsBox, globalTrendsBox;
 //	Scene scene;
 	/**
 	 * On click on a login button, a new browser will open up to prompt
@@ -89,6 +93,19 @@ public class SEController
                         if (twitterTab.isSelected()) 
                         {
                             System.out.println("twitter");
+                            
+                            //create a new twitter object
+                            twitter twitter = new twitter();
+                            try
+							{
+                            	//pass the trends box to the twitter
+                            	//object along with location
+								twitter.Top10Trends(globalTrendsBox, 1);
+							} catch (TwitterException e)
+							{
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
                         }
                     }
                 });

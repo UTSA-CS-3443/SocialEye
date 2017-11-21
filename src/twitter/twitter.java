@@ -3,6 +3,8 @@ package twitter;
 import java.util.List;
 import java.util.Scanner;
 
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import twitter4j.Status;
 import twitter4j.Trend;
 import twitter4j.Trends;
@@ -74,7 +76,7 @@ public class twitter
 	 *  
 	 * @author Brian
 	 */	
-	public void Top10Trends() throws TwitterException 
+	public void Top10Trends(TextFlow trendsBox, int locationID) throws TwitterException 
 	{
 	    
 	    /* 
@@ -83,7 +85,7 @@ public class twitter
 	     * WOEID 1 means to search worldwide. 
 	     */
 		
-		Trends trends = this.twitter.getPlaceTrends(1);
+		Trends trends = this.twitter.getPlaceTrends(locationID);
 	    
 		// Used to stop our trends loop once the counter reaches 10.
 		int count = 0;
@@ -95,6 +97,7 @@ public class twitter
 			if (count < 10) {
 				// Get the name of the current trend and iterate to the next trend.
 	        		System.out.println(trend.getName());
+	        		trendsBox.getChildren().add(new Text(trend.getName()+"\n"));
 	        		count+=1;
 	        	}
 		}		
