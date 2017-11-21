@@ -36,7 +36,12 @@ import org.apache.http.NameValuePair;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.UsernamePasswordCredentials;
 
-
+/**
+ * OAuth2 Authentication for reddits api. No refresh token has been
+ * implemented.
+ * @author Devin Nguyen
+ *
+ */
 public class RedditOAuth {
 	
 	//Send user to auth website; will need to authorize
@@ -141,7 +146,11 @@ public class RedditOAuth {
 	    return jsonObject;
 	}
 	
-	 private static String readAll(Reader rd) throws IOException {
+	public static String getAccessTokenFromJSONString(JSONObject json) throws JSONException {
+			return json.getString("access_token");
+	}
+	
+	private static String readAll(Reader rd) throws IOException {
 		    StringBuilder sb = new StringBuilder();
 		    int cp;
 		    while ((cp = rd.read()) != -1) {
