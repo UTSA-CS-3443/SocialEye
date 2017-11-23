@@ -2,6 +2,8 @@ package controller;
 
 import java.io.IOException;
 
+import org.json.JSONException;
+
 import SMauthorization.GetAccessToken;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -17,8 +19,12 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
+import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+import reddit.RedditGet;
+import reddit.RedditOAuth;
 import reddit.WebViewBrowser;
 import reddit.WebViewBrowser.Browser;
 import twitter.*;
@@ -31,13 +37,15 @@ public class SEController
 	@FXML
 	Tab homeTab, twitterTab, facebookTab, redditTab;
 	@FXML
-	Button btnRedditLogin, btnTwitterLogin;
+	Button btnRedditLogin, btnTwitterLogin, btnPostTweet;
+	@FXML
+	Text loginid;
 	Stage stage;
 	@FXML
 	TextFlow localTrendsBox, globalTrendsBox, twitterFeed, redditFeed, facebookFeed;
 	@FXML
 	TextArea postTweet;
-//	Scene scene;
+
 	/**
 	 * On click on a login button, a new browser will open up to prompt
 	 * the user to login.
@@ -47,11 +55,23 @@ public class SEController
 	 * 
 	 * @author Devin Nguyen
 	 */
+	
 	public void onLoginClick() {
 		btnRedditLogin.setOnAction(new EventHandler<ActionEvent>() {
 		    public void handle(ActionEvent event) {
-		    		WebViewBrowser webViewBrowser = new WebViewBrowser();
-		    		webViewBrowser.start(new Stage());
+	    				WebViewBrowser webViewBrowser = new WebViewBrowser();
+	    				Stage browserStage = new Stage();
+	    				webViewBrowser.start(browserStage);
+	    				browserStage.setOnHiding(new EventHandler<WindowEvent>() {
+	    				    @Override
+	    				    public void handle(WindowEvent event) {
+		    					try {
+									loginid.setText("Successfully logged in as: " + RedditGet.username(RedditGet.access_token));
+								} catch (IOException | JSONException e) {
+									e.printStackTrace();
+								}
+	    				    }
+	    				});
 		    }
 		});
 		btnTwitterLogin.setOnAction(new EventHandler<ActionEvent>() {
@@ -60,6 +80,25 @@ public class SEController
 			}
 		});
 	}
+	
+	/**
+	 * On click, takes the text from the postTweet TextArea and Tweets it
+	 *
+	 * @author Alex Shi
+	 */
+	
+	/*
+	public void onClick() {
+		btnPostTweet.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				twitter twitter = new twitter();
+				String tweet;
+				tweet = postTweet.getText();
+				System.out.println(tweet);
+				twitter.PostTweet(tweet);
+			}
+		});
+	} /*
 	
 	/**
 	 * onTabSelect will perform certain actions
@@ -110,9 +149,12 @@ public class SEController
                             twitter twitter = new twitter();
                             try
 							{
-                            	//pass the trends box to the twitter
-                            	//object along with location
+                            		// Gets global and local trends
+                            		// 1 is global, 2487796 is hard coded for San Antonio 8)
 								twitter.Top10Trends(globalTrendsBox, 1);
+								twitter.Top10Trends(localTrendsBox, 2487796);
+								// Gets the user's twitter feed
+								twitter.TwitterTL(twitterFeed);
 							} catch (TwitterException e)
 							{
 								// TODO Auto-generated catch block
