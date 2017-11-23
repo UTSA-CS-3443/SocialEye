@@ -14,6 +14,7 @@ import org.json.JSONException;
 
 import controller.Main;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.geometry.HPos;
@@ -82,9 +83,10 @@ public class Browser extends Region {
 						try {
 							RedditGet.access_token = 
 									RedditOAuth.getAccessTokenFromJSONString(
-											RedditOAuth.getToken(matcher.group(1)));		
+											RedditOAuth.getToken(matcher.group(1)));	
 							System.out.println(RedditGet.frontpage(RedditGet.access_token));
 							System.out.println(RedditGet.username(RedditGet.access_token));
+							browser.getScene().getWindow().hide();						
 						} catch (IOException | JSONException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();

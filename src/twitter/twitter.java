@@ -47,16 +47,10 @@ public class twitter
 	 * 
 	 * @author Brian
 	 */	
-	public void PostTweet()
-	{
-		// Used to get input from the user
-		Scanner scan = new Scanner(System.in);
-		
+	public void PostTweet(String tweet)
+	{	
 		// The factory instance is re-useable and thread safe.
 		this.twitter = TwitterFactory.getSingleton();
-	
-		// Gets input from the user of what they want to tweet
-		String tweet = scan.nextLine(); 
 		
 		// Attempt to post a tweet to twitter
 		
@@ -96,7 +90,7 @@ public class twitter
 			// Keep getting trends until we reach 10
 			if (count < 10) {
 				// Get the name of the current trend and iterate to the next trend.
-	        		System.out.println(trend.getName());
+	        		System.out.println(trend.getName() + "\n");
 	        		trendsBox.getChildren().add(new Text(trend.getName()+"\n"));
 	        		count+=1;
 	        	}
@@ -109,7 +103,7 @@ public class twitter
 	 * @author Brian
 	 *
 	 */	
-	public void TwitterTL() {
+	public void TwitterTL(TextFlow feed) {
 		// Used to get the name of the user and the list of tweets on the timeline
 		String user;
 		List<Status> statuses;		
@@ -133,7 +127,9 @@ public class twitter
 			 // Iterate through each tweet and display them
 			 for (Status status : statuses) 
 			 {
-				 System.out.println("@" + status.getUser().getScreenName() + " - " + status.getText());		
+				 System.out.println("@" + status.getUser().getScreenName() + " - " + status.getText() +"\n");
+				 feed.getChildren().add(new Text("@" + status.getUser().getScreenName() 
+						 				+ " - " + status.getText() + "\n"));
 			 }
 		} 
 		// If we were unable to get the timeline
