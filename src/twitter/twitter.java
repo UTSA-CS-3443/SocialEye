@@ -11,6 +11,7 @@ import java.util.Scanner;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import twitter4j.Status;
@@ -193,8 +194,11 @@ public class twitter
 			 for (Status status : statuses) 
 			 {
 				 System.out.println("@" + status.getUser().getScreenName() + " - " + status.getText() +"\n");
-				 feed.getChildren().add(new Text("@" + status.getUser().getScreenName() 
-						 				+ " - " + status.getText() + "\n"));
+				 //creates text object and sets its color to white before adding it to the TextFlow
+				 Text tweetText = new Text("@" + status.getUser().getScreenName() 
+			 				+ " - " + status.getText() + "\n");
+				 tweetText.setFill(Color.WHITE);
+				 feed.getChildren().add(tweetText);
 			 }
 		} 
 		// If we were unable to get the timeline
