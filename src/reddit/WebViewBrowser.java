@@ -8,6 +8,7 @@ import java.net.URL;
 
 import com.sun.media.jfxmedia.logging.Logger;
 
+import java.util.ArrayList;
 import java.util.regex.*;
 
 import org.json.JSONException;
@@ -83,8 +84,9 @@ public class Browser extends Region {
 						try {
 							RedditGet.access_token = 
 									RedditOAuth.getAccessTokenFromJSONString(
-											RedditOAuth.getToken(matcher.group(1)));	
-							System.out.println(RedditGet.frontpage(RedditGet.access_token));
+											RedditOAuth.getToken(matcher.group(1)));
+							ArrayList<RedditThread> frontpage = RedditGet.frontpage(RedditGet.access_token);
+							System.out.println(frontpage.get(0).getTitle());
 							System.out.println(RedditGet.username(RedditGet.access_token));
 							browser.getScene().getWindow().hide();						
 						} catch (IOException | JSONException e) {
