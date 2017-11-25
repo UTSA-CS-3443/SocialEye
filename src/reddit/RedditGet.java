@@ -1,6 +1,7 @@
 package reddit;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpEntity;
@@ -53,7 +54,8 @@ public class RedditGet {
 	 * @throws IOException
 	 * @throws JSONException
 	 */
-	public static String frontpage(String access_token) throws UnsupportedOperationException, IOException, JSONException {
+	public static ArrayList<RedditThread> frontpage(String access_token) throws UnsupportedOperationException, IOException, JSONException {
+		ArrayList<RedditThread> frontpage = new ArrayList<RedditThread>();
 		CloseableHttpClient httpclient = HttpClientBuilder.create().build();
 		HttpGet httpget = new HttpGet("https://oauth.reddit.com/");
         httpget.addHeader("User-Agent", "windows:SocialEye:v0.1.1 (by /u/diagonr)");
@@ -68,9 +70,11 @@ public class RedditGet {
 		System.out.println(jsonArray.get(0));
 		for(int i = 0; i < 25; i++) {
 			JSONObject current = jsonArray.getJSONObject(i);
+			RedditThread currentThread = new RedditThread(current);
+			frontpage.add(currentThread);
 			System.out.println(current.getJSONObject("data").getString("title"));
 		}
-		return "";
+		return frontpage;
 	}
 	
 }

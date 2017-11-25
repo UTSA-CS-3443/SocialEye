@@ -67,7 +67,7 @@ public class SEController
 	    				    public void handle(WindowEvent event) {
 		    					try {
 									loginid.setText("Successfully logged in as: " + RedditGet.username(RedditGet.access_token));
-								} catch (IOException | JSONException e) {
+		    					} catch (IOException | JSONException e) {
 									e.printStackTrace();
 								}
 	    				    }
