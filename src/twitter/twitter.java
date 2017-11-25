@@ -1,8 +1,16 @@
 package twitter;
 
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URLEncoder;
 import java.util.List;
 import java.util.Scanner;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import twitter4j.Status;
@@ -94,10 +102,61 @@ public class twitter
 			if (count < 10) {
 				// Get the name of the current trend and iterate to the next trend.
 	        		System.out.println(trend.getName() + "\n");
-	        		trendsBox.getChildren().add(new Text(trend.getName()+"\n"));
-	        		count+=1;
+	        		
+	        		//create new hyperlink based on trend name
+        			Hyperlink test = new Hyperlink(trend.getName());
+        			
+        			//determine whether trend is a hashtag or a noun and opens appropriate webpage
+	        		if(trend.getName().indexOf('#') != -1)
+	        		{
+	        			test.setOnAction(new EventHandler<ActionEvent>() {
+	        				public void handle(ActionEvent e) {
+	        					Desktop desktop = Desktop.getDesktop();
+	        					try
+	        					{
+	        						desktop.browse(new URI("https://twitter.com/hashtag/"+test.getText().replace("#", "")));
+	        					} catch (IOException h)
+	        					{
+	        						// TODO Auto-generated catch block
+	        						h.printStackTrace();
+	        					} catch (URISyntaxException p)
+	        					{
+	        						// TODO Auto-generated catch block
+	        						p.printStackTrace();
+	        					}
+	        				}
+	        			});
+
+	        		}
+	        		else
+	        		{
+	        			test.setOnAction(new EventHandler<ActionEvent>() {
+	        				public void handle(ActionEvent e) {
+	        					Desktop desktop = Desktop.getDesktop();
+	        					try
+	        					{
+	        						//encodes invalid URI characters
+	        						desktop.browse(new URI("https://twitter.com/search?q="+
+	        							URLEncoder.encode(test.getText(), "utf-8")+"&src=tren"));
+	        					} catch (IOException h)
+	        					{
+	        						// TODO Auto-generated catch block
+	        						h.printStackTrace();
+	        					} catch (URISyntaxException p)
+	        					{
+	        						// TODO Auto-generated catch block
+	        						p.printStackTrace();
+	        					}
+	        				}
+	        			});
+	        		}
+	        		//adds hyperlinks to TextFlow along with newlines
+        			trendsBox.getChildren().add(test);
+        			trendsBox.getChildren().add(new Text("\n"));
 	        	}
-		}		
+			
+    			count+=1;
+		}
 	}
 	/**
 	 * As of right now, TwitterTL gets the user's home timeline.
