@@ -81,6 +81,9 @@ public class twitter
 		
 		Trends trends = this.twitter.getPlaceTrends(locationID);
 	    
+		//clear the current contents of the textflow
+		trendsBox.getChildren().clear();
+		
 		// Used to stop our trends loop once the counter reaches 10.
 		int count = 0;
 	    
@@ -121,6 +124,9 @@ public class twitter
 			 *  an if statement later to handle that.
 			 * 
 			 */
+			
+			//clears the current contents of the textflow
+			feed.getChildren().clear();
 			
 			// Attempt to get all the tweets from the user's home timeline
 			statuses = this.twitter.getHomeTimeline();
