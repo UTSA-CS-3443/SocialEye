@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.json.JSONException;
 
@@ -15,10 +16,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
@@ -26,6 +31,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import reddit.RedditGet;
 import reddit.RedditOAuth;
+import reddit.RedditThread;
 import reddit.WebViewBrowser;
 import reddit.WebViewBrowser.Browser;
 import twitter.*;
@@ -40,10 +46,16 @@ public class SEController
 	@FXML
 	Button btnRedditLogin, btnTwitterLogin, btnPostTweet;
 	@FXML
+	VBox redditVBox;
+	@FXML
+	Pane redditContainer;
+	@FXML
 	Text loginid;
+	@FXML
+	ScrollPane redditScroll;
 	Stage stage;
 	@FXML
-	TextFlow localTrendsBox, globalTrendsBox, twitterFeed, redditFeed, facebookFeed;
+	TextFlow localTrendsBox, globalTrendsBox, twitterFeed, redditFeed, facebookFeed, redditTitle;
 	@FXML
 	TextArea postTweet;
 
@@ -67,7 +79,19 @@ public class SEController
 	    				    @Override
 	    				    public void handle(WindowEvent event) {
 		    					try {
-									loginid.setText("Successfully logged in as: " + RedditGet.username(RedditGet.access_token));
+									loginid.setText("Logged in as: " + RedditGet.username(RedditGet.access_token));
+									ArrayList<RedditThread> frontpage = RedditGet.frontpage(RedditGet.access_token);
+									for(RedditThread current: frontpage) {
+										Pane pane = new Pane();
+										pane.setPrefWidth(715);
+										pane.setPrefHeight(50);
+										TextFlow textflow = new TextFlow();
+										textflow.getChildren().add(new Hyperlink(current.getTitle()));
+										pane.setStyle("-fx-border-color: black");
+										pane.getChildren().add(textflow);
+										
+										redditVBox.getChildren().add(pane);	
+									}
 		    					} catch (IOException | JSONException e) {
 									e.printStackTrace();
 								}
