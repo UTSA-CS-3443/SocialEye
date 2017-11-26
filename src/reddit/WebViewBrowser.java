@@ -85,8 +85,6 @@ public class Browser extends Region {
 							RedditGet.access_token = 
 									RedditOAuth.getAccessTokenFromJSONString(
 											RedditOAuth.getToken(matcher.group(1)));
-							ArrayList<RedditThread> frontpage = RedditGet.frontpage(RedditGet.access_token);
-							System.out.println(frontpage.get(0).getTitle());
 							System.out.println(RedditGet.username(RedditGet.access_token));
 							browser.getScene().getWindow().hide();						
 						} catch (IOException | JSONException e) {
