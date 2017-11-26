@@ -26,6 +26,7 @@ public class RedditThread {
 	private String selftext_html;
 	private String selftext;
 	private String author;
+	private int num_comments;
 	
 	public RedditThread(JSONObject jsonObject) {
 		try {
@@ -51,6 +52,7 @@ public class RedditThread {
 			//this.setSelftext_html(jsonObject.getJSONObject("data").getString("selftext_html"));
 			this.setSelftext(jsonObject.getJSONObject("data").getString("selftext"));
 			this.setAuthor(jsonObject.getJSONObject("data").getString("author"));
+			this.setNum_comments(jsonObject.getJSONObject("data").getInt("num_comments"));
 		} catch (JSONException e) {
 			//this.setSelftext_html("null");
 			e.printStackTrace();
@@ -192,6 +194,20 @@ public class RedditThread {
 	 */
 	public void setAuthor(String author) {
 		this.author = author;
+	}
+
+	/**
+	 * @return the num_comments
+	 */
+	public int getNum_comments() {
+		return num_comments;
+	}
+
+	/**
+	 * @param num_comments the num_comments to set
+	 */
+	public void setNum_comments(int num_comments) {
+		this.num_comments = num_comments;
 	}
 	
 	
