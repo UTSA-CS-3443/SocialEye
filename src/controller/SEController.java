@@ -1,6 +1,8 @@
 package controller;
 
+import java.awt.Desktop;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 import org.json.JSONException;
@@ -94,8 +96,21 @@ public class SEController
 										domain.setFill(Color.LIGHTGRAY);
 										domain.setText(current.getDomain());
 										
+										
+										Hyperlink titlelink = new Hyperlink(current.getTitle());
+										titlelink.setOnAction(new EventHandler<ActionEvent>() {
+										    @Override
+										    public void handle(ActionEvent e) {
+										    	try {
+													Desktop.getDesktop().browse(current.getUrl().toURI());
+												} catch (IOException | URISyntaxException e1) {
+													e1.printStackTrace();
+												}
+										    }
+										});
+										
 										TextFlow title = new TextFlow();
-										title.getChildren().add(new Hyperlink(current.getTitle()));
+										title.getChildren().add(titlelink);
 										title.getChildren().add(domain);
 										title.setLayoutX(50);
 										
@@ -105,9 +120,21 @@ public class SEController
 										author.setFill(Color.WHITE);
 										author.setText("Submitted by " + current.getAuthor());
 										
+										Hyperlink commentLink = new Hyperlink(current.getNum_comments() + "comments");
+										commentLink.setOnAction(new EventHandler<ActionEvent>() {
+											@Override
+											public void handle(ActionEvent e) {
+												try {
+													Desktop.getDesktop().browse(current.getPermalinkURL().toURI());
+												} catch (IOException | URISyntaxException e2) {
+													e2.printStackTrace();
+												}
+											}
+										});
+										
 										TextFlow comment = new TextFlow();
 										comment.getChildren().add(author);
-										comment.getChildren().add(new Hyperlink(current.getNum_comments() + " comments"));
+										comment.getChildren().add(commentLink);
 										comment.setLayoutY(20);
 										comment.setLayoutX(50);
 										
