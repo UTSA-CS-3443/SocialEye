@@ -142,7 +142,7 @@
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Text fx:id="loginid" layoutX="512.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Logged in as:" wrappingWidth="187.63671875" />
+                        <Text fx:id="loginid" layoutX="512.0" layoutY="16.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Logged in as:" wrappingWidth="187.63671875" />
                      </children></AnchorPane>
             </content>
                <graphic>
