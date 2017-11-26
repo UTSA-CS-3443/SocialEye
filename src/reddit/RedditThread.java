@@ -31,6 +31,7 @@ public class RedditThread {
 			this.setDomain(jsonObject.getJSONObject("data").getString("domain"));
 			this.setSubreddit(jsonObject.getJSONObject("data").getString("subreddit_name_prefixed"));
 			this.setTitle(jsonObject.getJSONObject("data").getString("title"));
+			/*
 			try {
 				this.setThumbnail(new Image(jsonObject.getJSONObject("data").getString("thumbnail")));
 			} catch (IllegalArgumentException e) {
@@ -39,6 +40,7 @@ public class RedditThread {
 						.getJSONObject(0).getJSONObject("source")
 						.getString("url")));
 			}
+			*/
 			this.setScore(jsonObject.getJSONObject("data").getInt("score"));
 			this.setOver_18(jsonObject.getJSONObject("data").getBoolean("over_18"));
 			if(this.isOver_18())
