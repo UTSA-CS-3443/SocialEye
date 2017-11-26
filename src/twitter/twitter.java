@@ -1,8 +1,17 @@
 package twitter;
 
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URLEncoder;
 import java.util.List;
 import java.util.Scanner;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import twitter4j.Status;
@@ -81,6 +90,9 @@ public class twitter
 		
 		Trends trends = this.twitter.getPlaceTrends(locationID);
 	    
+		//clear the current contents of the textflow
+		trendsBox.getChildren().clear();
+		
 		// Used to stop our trends loop once the counter reaches 10.
 		int count = 0;
 	    
@@ -91,10 +103,61 @@ public class twitter
 			if (count < 10) {
 				// Get the name of the current trend and iterate to the next trend.
 	        		System.out.println(trend.getName() + "\n");
-	        		trendsBox.getChildren().add(new Text(trend.getName()+"\n"));
-	        		count+=1;
+	        		
+	        		//create new hyperlink based on trend name
+        			Hyperlink test = new Hyperlink(trend.getName());
+        			
+        			//determine whether trend is a hashtag or a noun and opens appropriate webpage
+	        		if(trend.getName().indexOf('#') != -1)
+	        		{
+	        			test.setOnAction(new EventHandler<ActionEvent>() {
+	        				public void handle(ActionEvent e) {
+	        					Desktop desktop = Desktop.getDesktop();
+	        					try
+	        					{
+	        						desktop.browse(new URI("https://twitter.com/hashtag/"+test.getText().replace("#", "")));
+	        					} catch (IOException h)
+	        					{
+	        						// TODO Auto-generated catch block
+	        						h.printStackTrace();
+	        					} catch (URISyntaxException p)
+	        					{
+	        						// TODO Auto-generated catch block
+	        						p.printStackTrace();
+	        					}
+	        				}
+	        			});
+
+	        		}
+	        		else
+	        		{
+	        			test.setOnAction(new EventHandler<ActionEvent>() {
+	        				public void handle(ActionEvent e) {
+	        					Desktop desktop = Desktop.getDesktop();
+	        					try
+	        					{
+	        						//encodes invalid URI characters
+	        						desktop.browse(new URI("https://twitter.com/search?q="+
+	        							URLEncoder.encode(test.getText(), "utf-8")+"&src=tren"));
+	        					} catch (IOException h)
+	        					{
+	        						// TODO Auto-generated catch block
+	        						h.printStackTrace();
+	        					} catch (URISyntaxException p)
+	        					{
+	        						// TODO Auto-generated catch block
+	        						p.printStackTrace();
+	        					}
+	        				}
+	        			});
+	        		}
+	        		//adds hyperlinks to TextFlow along with newlines
+        			trendsBox.getChildren().add(test);
+        			trendsBox.getChildren().add(new Text("\n"));
 	        	}
-		}		
+			
+    			count+=1;
+		}
 	}
 	/**
 	 * As of right now, TwitterTL gets the user's home timeline.
@@ -122,14 +185,20 @@ public class twitter
 			 * 
 			 */
 			
+			//clears the current contents of the textflow
+			feed.getChildren().clear();
+			
 			// Attempt to get all the tweets from the user's home timeline
 			statuses = this.twitter.getHomeTimeline();
 			 // Iterate through each tweet and display them
 			 for (Status status : statuses) 
 			 {
 				 System.out.println("@" + status.getUser().getScreenName() + " - " + status.getText() +"\n");
-				 feed.getChildren().add(new Text("@" + status.getUser().getScreenName() 
-						 				+ " - " + status.getText() + "\n"));
+				 //creates text object and sets its color to white before adding it to the TextFlow
+				 Text tweetText = new Text("@" + status.getUser().getScreenName() 
+			 				+ " - " + status.getText() + "\n");
+				 tweetText.setFill(Color.WHITE);
+				 feed.getChildren().add(tweetText);
 			 }
 		} 
 		// If we were unable to get the timeline

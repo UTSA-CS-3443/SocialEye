@@ -3,3 +3,9 @@
     -fx-pref-height: 45px;
     -fx-pref-width: 45px;
 } 
+.root{
+	-fx-base: rgb(24,25,27);
+}
+TextFlow{
+	-fx-text-fill: white;
+}

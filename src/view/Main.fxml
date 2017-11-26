@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<<<<<<< HEAD
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
@@ -143,6 +144,156 @@
                            </font>
                         </Text>
                         <Text fx:id="loginid" layoutX="512.0" layoutY="16.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Logged in as:" wrappingWidth="187.63671875" />
+=======
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+<AnchorPane prefHeight="727.0" prefWidth="743.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SEController">
+   <children>
+      <TitledPane animated="false" collapsible="false" layoutX="-2.0" prefHeight="727.0" prefWidth="743.0" text="SocialEye">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="387.0" prefWidth="394.0">
+               <children>
+                  <SplitPane prefHeight="50.0" prefWidth="151.0" />
+                  <SplitPane layoutX="151.0" prefHeight="50.0" prefWidth="592.0">
+                     <items>
+                        <ToolBar prefHeight="48.0" prefWidth="621.0">
+                          <items>
+                            <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="41.0" textAlignment="CENTER"> 
+                            	<graphic>
+                            		<ImageView fitHeight="26.0" fitWidth="26.0">
+                            			<image>
+                            				<Image url="@../avatar/refresh-icon-19.png" />
+                            			</image>
+                            		</ImageView>
+                            	</graphic>
+                            </Button>
+                              <Button fx:id="btnRedditLogin" mnemonicParsing="false" onAction="#onLoginClick" prefHeight="38.0" prefWidth="87.0" text="Reddit Login">
+                                 <font>
+                                    <Font name="Helvetica Neue" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnTwitterLogin" mnemonicParsing="false" onAction="#onLoginClick" prefHeight="38.0" prefWidth="87.0" text="Twitter Login">
+                                 <font>
+                                    <Font name="Helvetica Neue" size="12.0" />
+                                 </font>
+                              </Button>
+                          </items>
+                        </ToolBar>
+                     </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+        </content>
+      </TitledPane>
+      <TabPane fx:id="SETabPane" layoutY="75.0" prefHeight="651.0" prefWidth="743.0" side="LEFT" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+            <Tab fx:id="homeTab" onSelectionChanged="#onTabSelect">
+              <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" preserveRatio="true">
+                     <image>
+                        <Image url="@../avatar/home-icon-80046.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Tab>
+          <Tab fx:id="twitterTab" onSelectionChanged="#onTabSelect">
+          	<graphic>
+          		<ImageView fitHeight="30.0" fitWidth="30.0">
+          			<image>
+          				<Image url="@../avatar/Twitter_Social_Icon_Square_Color.png" />
+          			</image>
+          		</ImageView>
+          	</graphic>
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="593.0" prefWidth="714.0">
+                     <children>
+                        <ScrollPane layoutX="14.0" layoutY="120.0" prefHeight="517.0" prefWidth="462.0">
+                           <content>
+                              <TextFlow fx:id="twitterFeed" prefHeight="499.0" prefWidth="442.0" />
+                           </content>
+                        </ScrollPane>
+                        <TextFlow fx:id="localTrendsBox" layoutX="483.0" layoutY="63.0" prefHeight="208.0" prefWidth="213.0" />
+                        <TextFlow fx:id="globalTrendsBox" layoutX="483.0" layoutY="348.0" prefHeight="208.0" prefWidth="213.0" />
+                        <Text fill="#aaaebb" layoutX="524.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trends For You" textAlignment="CENTER">
+                           <font>
+                              <Font name="Helvetica Neue Bold" size="18.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#aaaebb" layoutX="530.0" layoutY="344.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Global Trends" textAlignment="CENTER">
+                           <font>
+                              <Font name="Helvetica Neue Bold" size="18.0" />
+                           </font>
+                        </Text>
+                        <TextArea fx:id="postTweet" layoutX="14.0" layoutY="17.0" prefHeight="64.0" prefWidth="463.0" promptText="What's happening?">
+                           <font>
+                              <Font name="Helvetica Neue" size="13.0" />
+                           </font>
+                        </TextArea>
+                        <Button fx:id="btnPostTweet" layoutX="435.0" layoutY="89.0" mnemonicParsing="false" text="Post">
+                           <font>
+                              <Font name="Helvetica Neue" size="12.0" />
+                           </font>
+                        </Button>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab fx:id="facebookTab" closable="false" onSelectionChanged="#onTabSelect">
+            <graphic>
+              <ImageView fitHeight="30.0" fitWidth="30.0">
+                     <image>
+                        <Image url="@../avatar/FB-f-Logo__blue_50.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="478.0" prefWidth="200.0">
+                     <children>
+                        <ScrollPane layoutX="23.0" layoutY="140.0" prefHeight="511.0" prefWidth="710.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="140.0">
+                           <content>
+                              <TextFlow fx:id="facebookFeed" prefHeight="494.0" prefWidth="693.0" />
+                           </content>
+                        </ScrollPane>
+                        <TextArea prefHeight="139.0" prefWidth="708.0" promptText="What's going on?">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </TextArea>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab fx:id="redditTab" onSelectionChanged="#onTabSelect">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="674.0" prefWidth="714.0">
+                     <children>
+                        <SplitPane layoutX="494.0" layoutY="-8.0" prefHeight="83.0" prefWidth="381.0" />
+                        <ScrollPane layoutX="58.0" layoutY="43.0" prefHeight="608.0" prefWidth="710.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="43.0">
+                           <content>
+                              <TextFlow fx:id="redditFeed" prefHeight="591.0" prefWidth="690.0" />
+                           </content></ScrollPane>
+                        <Text layoutX="22.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="trending subreddits">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="loginid" layoutX="512.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Logged in as:" wrappingWidth="187.63671875" />
+>>>>>>> branch 'master' of https://github.com/UTSA-CS-3443/SocialEye.git
                      </children></AnchorPane>
             </content>
                <graphic>
