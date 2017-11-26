@@ -27,6 +27,7 @@ public class RedditThread {
 	private String selftext;
 	private String author;
 	private int num_comments;
+	private URL permalinkURL;
 	
 	public RedditThread(JSONObject jsonObject) {
 		try {
@@ -48,6 +49,7 @@ public class RedditThread {
 			if(this.isOver_18())
 				this.setThumbnail(new Image("https://upload.wikimedia.org/wikipedia/commons/c/c4/No_icon_red.svg"));
 			this.setPermalink(jsonObject.getJSONObject("data").getString("permalink"));
+			this.setPermalinkURL(jsonObject.getJSONObject("data").getString("permalink"));
 			this.setUrl(new URL(jsonObject.getJSONObject("data").getString("url")));
 			//this.setSelftext_html(jsonObject.getJSONObject("data").getString("selftext_html"));
 			this.setSelftext(jsonObject.getJSONObject("data").getString("selftext"));
@@ -132,6 +134,21 @@ public class RedditThread {
 	 */
 	public void setOver_18(boolean over_18) {
 		this.over_18 = over_18;
+	}
+	/**
+	 * 
+	 * @return permalinkURL
+	 */
+	public URL getPermalinkURL() {
+		return permalinkURL;
+	}
+	/**
+	 * 
+	 * @param permalink the permalink to be converted to a url
+	 * @throws MalformedURLException
+	 */
+	public void setPermalinkURL(String permalink) throws MalformedURLException {
+		this.permalinkURL = new URL("https://www.reddit.com" + permalink);
 	}
 	/**
 	 * @return the permalink
