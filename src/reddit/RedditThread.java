@@ -25,6 +25,7 @@ public class RedditThread {
 	private URL url;
 	private String selftext_html;
 	private String selftext;
+	private String author;
 	
 	public RedditThread(JSONObject jsonObject) {
 		try {
@@ -49,6 +50,7 @@ public class RedditThread {
 			this.setUrl(new URL(jsonObject.getJSONObject("data").getString("url")));
 			//this.setSelftext_html(jsonObject.getJSONObject("data").getString("selftext_html"));
 			this.setSelftext(jsonObject.getJSONObject("data").getString("selftext"));
+			this.setAuthor(jsonObject.getJSONObject("data").getString("author"));
 		} catch (JSONException e) {
 			//this.setSelftext_html("null");
 			e.printStackTrace();
@@ -176,6 +178,20 @@ public class RedditThread {
 	 */
 	public void setSelftext(String selftext) {
 		this.selftext = selftext;
+	}
+
+	/**
+	 * @return the author
+	 */
+	public String getAuthor() {
+		return author;
+	}
+
+	/**
+	 * @param author the author to set
+	 */
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 	
 	
