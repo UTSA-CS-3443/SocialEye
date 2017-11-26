@@ -17,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -25,7 +26,9 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -48,14 +51,12 @@ public class SEController
 	@FXML
 	VBox redditVBox;
 	@FXML
-	Pane redditContainer;
-	@FXML
 	Text loginid;
 	@FXML
 	ScrollPane redditScroll;
 	Stage stage;
 	@FXML
-	TextFlow localTrendsBox, globalTrendsBox, twitterFeed, redditFeed, facebookFeed, redditTitle;
+	TextFlow localTrendsBox, globalTrendsBox, twitterFeed, redditFeed, facebookFeed;
 	@FXML
 	TextArea postTweet;
 
@@ -82,15 +83,46 @@ public class SEController
 									loginid.setText("Logged in as: " + RedditGet.username(RedditGet.access_token));
 									ArrayList<RedditThread> frontpage = RedditGet.frontpage(RedditGet.access_token);
 									for(RedditThread current: frontpage) {
-										Pane pane = new Pane();
-										pane.setPrefWidth(715);
-										pane.setPrefHeight(50);
-										TextFlow textflow = new TextFlow();
-										textflow.getChildren().add(new Hyperlink(current.getTitle()));
-										pane.setStyle("-fx-border-color: black");
-										pane.getChildren().add(textflow);
 										
-										redditVBox.getChildren().add(pane);	
+										Pane thread = new Pane();
+										thread.setPrefWidth(715);
+										thread.setPrefHeight(50);
+										thread.setStyle("-fx-border-color: black");
+										
+										Text domain = new Text();
+										domain.setFont(Font.font(10));
+										domain.setFill(Color.LIGHTGRAY);
+										domain.setText(current.getDomain());
+										
+										TextFlow title = new TextFlow();
+										title.getChildren().add(new Hyperlink(current.getTitle()));
+										title.getChildren().add(domain);
+										title.setLayoutX(50);
+										
+										
+										Text author = new Text();
+										author.setFont(Font.font(12));
+										author.setFill(Color.WHITE);
+										author.setText("Submitted by " + current.getAuthor());
+										
+										TextFlow comment = new TextFlow();
+										comment.getChildren().add(author);
+										comment.getChildren().add(new Hyperlink(current.getNum_comments() + " comments"));
+										comment.setLayoutY(20);
+										comment.setLayoutX(50);
+										
+										Text score = new Text();
+										score.setFont(Font.font(14));
+										score.setFill(Color.WHITE);
+										score.setText(Integer.toString(current.getScore()));
+										score.setY(25);
+										score.setX(5);
+
+										thread.getChildren().add(score);
+										thread.getChildren().add(title);
+										thread.getChildren().add(comment);
+										
+										redditVBox.getChildren().add(thread);	
 									}
 		    					} catch (IOException | JSONException e) {
 									e.printStackTrace();
