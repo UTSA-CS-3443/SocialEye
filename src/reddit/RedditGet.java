@@ -72,7 +72,6 @@ public class RedditGet {
 			JSONObject current = jsonArray.getJSONObject(i);
 			RedditThread currentThread = new RedditThread(current);
 			frontpage.add(currentThread);
-			System.out.println(current.getJSONObject("data").getString("title"));
 		}
 		return frontpage;
 	}
