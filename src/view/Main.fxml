@@ -11,7 +11,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -137,17 +136,9 @@
                         <SplitPane layoutX="494.0" layoutY="-8.0" prefHeight="83.0" prefWidth="381.0" />
                         <ScrollPane fx:id="redditScroll" layoutY="34.0" prefHeight="608.0" prefWidth="710.0" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="34.0">
                            <content>
-                              <VBox fx:id="redditVBox">
-                                 <children>
-                                    <Pane fx:id="redditContainer" prefHeight="50.0" prefWidth="715.0">
-                                       <children>
-                                          <TextFlow id="redditTitle" fx:id="redditTitle" prefHeight="50.0" prefWidth="700.0" />
-                                       </children>
-                                    </Pane>
-                                 </children>
-                              </VBox>
+                              <VBox fx:id="redditVBox" />
                            </content></ScrollPane>
-                        <Text fill="WHITE" layoutX="22.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="trending subreddits">
+                        <Text fill="WHITE" layoutX="22.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="frontpage">
                            <font>
                               <Font size="15.0" />
                            </font>
