@@ -16,7 +16,11 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import reddit.RedditOAuth;
-
+/**
+ * Test browser opening up getUserAuthUrl
+ * @author Devin Nguyen
+ *
+ */
 public class getUserAuthUrlTest {
 
 	@BeforeClass
