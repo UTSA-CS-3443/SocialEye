@@ -120,7 +120,7 @@ public class SEController
 										author.setFill(Color.WHITE);
 										author.setText("Submitted by " + current.getAuthor());
 										
-										Hyperlink commentLink = new Hyperlink(current.getNum_comments() + "comments");
+										Hyperlink commentLink = new Hyperlink(current.getNum_comments() + " comments");
 										commentLink.setOnAction(new EventHandler<ActionEvent>() {
 											@Override
 											public void handle(ActionEvent e) {
@@ -270,7 +270,7 @@ public class SEController
                 });
                 
                 // If the user selects facebook
-                facebookTab.setOnSelectionChanged(new EventHandler<Event>() 
+               /* facebookTab.setOnSelectionChanged(new EventHandler<Event>() 
                 {
                     @Override
                     public void handle(Event t)
@@ -282,7 +282,7 @@ public class SEController
                         }
                     }
                 });
-                
+                */
                 // If the user selects reddit
                 redditTab.setOnSelectionChanged(new EventHandler<Event>() 
                 {
