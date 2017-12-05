@@ -8,7 +8,13 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-
+/**
+ * SocialEye is a social media hub intended to decrease downtime
+ * from browsing and increase productivity.
+ * See <a href="https://github.com/UTSA-CS-3443/SocialEye">https://github.com/UTSA-CS-3443/SocialEye</a>
+ * @author Devin Nguyen
+ *
+ */
 public class Main extends Application {
 	
 	public static Stage stage;

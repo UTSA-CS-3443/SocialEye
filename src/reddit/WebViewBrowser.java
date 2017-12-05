@@ -30,7 +30,12 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 	 
-
+/**
+ * WebView class to display a web browser for users to login through
+ * 
+ * @author Devin Nguyen
+ *
+ */
 public class WebViewBrowser extends Application {
     private Scene scene;
     @Override public void start(Stage stage) {
@@ -41,7 +46,13 @@ public class WebViewBrowser extends Application {
         scene.getStylesheets().add("view/webview.css");        
         stage.show();
     }
-
+/**
+ * Browser class to support the WebView stage; also listens if the user successfully encounters the 
+ * SocialEye Redirect webpage to obtain the access token
+ * 
+ * @author Devin Nguyen
+ *
+ */
 public class Browser extends Region {
  
     final WebView browser = new WebView();
@@ -57,9 +68,7 @@ public class Browser extends Region {
 			String nullFragment = null;
 			URI uri = new URI(url.getProtocol(), url.getHost(), url.getPath(), url.getQuery(), nullFragment );
 	        webEngine.locationProperty().addListener(new urlListener());
-			webEngine.load(uri.toString());
-	       // webEngine.load("https://diagonr.github.io/SocialEyeRedirect/query=213213&code=test");
-	        
+			webEngine.load(uri.toString());	        
 	        
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
@@ -72,7 +81,7 @@ public class Browser extends Region {
 	        getChildren().add(browser);
 	
 	    }
-    
+    	//Check if the user encounters the SocialEyeRedirect github page
     	private class urlListener implements ChangeListener<String>{
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -88,7 +97,6 @@ public class Browser extends Region {
 							System.out.println(RedditGet.username(RedditGet.access_token));
 							browser.getScene().getWindow().hide();						
 						} catch (IOException | JSONException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 					}

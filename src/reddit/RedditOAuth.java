@@ -44,6 +44,8 @@ import org.apache.http.auth.UsernamePasswordCredentials;
  */
 public class RedditOAuth {
 	
+	//Look on https://github.com/reddit/reddit/wiki/OAuth2 for info	
+	
 	//Send user to auth website; will need to authorize
 	public static final String OAUTH_API_DOMAIN = "https://oauth.reddit.com";
 	//Reddit sends user to redirect	URI
@@ -135,8 +137,6 @@ public class RedditOAuth {
 				System.out.println("Response failed");
 			}
 			
-			//TODO do something with entity
-			
 			EntityUtils.consume(entity);
 			
 	      } catch (MalformedURLException e ) {
@@ -176,9 +176,5 @@ public class RedditOAuth {
 		    return sb.toString();
 		  }
 	
-	//params.add(new BasicNameValuePair("grant_type", "authorization_code"));
-	//TODO modify POST data to retrieve access token
-	//grant_type=authorization_code&code=CODE&redirect_uri=URI
-	
-	//Look on https://github.com/reddit/reddit/wiki/OAuth2 for info
+
 }

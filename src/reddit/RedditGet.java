@@ -24,11 +24,10 @@ public class RedditGet {
 	
 	
 	/**
+	 * Get the user's username and karma count
 	 * 
-	 * @param access_token
-	 * @return <username> ( <link_karma> : <commment_karma> ) format
-	 * @throws IOException
-	 * @throws JSONException
+	 * @param access_token access_token of user
+	 * @return /username/ ( /link_karma/ : /commment_karma/ ) format
 	 */
 	public static String username(String access_token) throws IOException, JSONException {
 		CloseableHttpClient httpclient = HttpClientBuilder.create().build();
@@ -48,11 +47,8 @@ public class RedditGet {
 	}
 	/**
 	 * Get the reddit frontpage of the logged in user
-	 * @param access_token
-	 * @return N/A
-	 * @throws UnsupportedOperationException
-	 * @throws IOException
-	 * @throws JSONException
+	 * @param access_token access_token of user
+	 * @return an arraylist of @see {@link reddit.RedditThread}
 	 */
 	public static ArrayList<RedditThread> frontpage(String access_token) throws UnsupportedOperationException, IOException, JSONException {
 		ArrayList<RedditThread> frontpage = new ArrayList<RedditThread>();

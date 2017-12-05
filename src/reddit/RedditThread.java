@@ -29,6 +29,10 @@ public class RedditThread {
 	private int num_comments;
 	private URL permalinkURL;
 	
+	/**
+	 * Create a RedditThread from a JSONObject
+	 * @param jsonObject jsonObject to obtain info
+	 */
 	public RedditThread(JSONObject jsonObject) {
 		try {
 			this.setDomain(jsonObject.getJSONObject("data").getString("domain"));
