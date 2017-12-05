@@ -11,7 +11,10 @@ import java.awt.*;
 import java.io.*;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Optional;
 import java.util.Properties;
+
+import javafx.scene.control.TextInputDialog;
 
 
 public class GetAccessToken {
@@ -82,7 +85,6 @@ public class GetAccessToken {
             System.out.println("Request token secret: " + requestToken.getTokenSecret());
             AccessToken accessToken = null;
 
-            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             while (null == accessToken) {
                 System.out.println("Open the following URL and grant access to your account:");
                 System.out.println(requestToken.getAuthorizationURL());
@@ -93,8 +95,14 @@ public class GetAccessToken {
                 } catch (URISyntaxException e) {
                     throw new AssertionError(e);
                 }
-                System.out.print("Enter the PIN(if available) and hit enter after you granted access.[PIN]:");
-                String pin = br.readLine();
+                
+                //creates a dialog box through which you can enter your pin
+                TextInputDialog input = new TextInputDialog();
+                input.setTitle("Twitter Authentication");
+                input.setContentText("Please enter your PIN: ");
+                Optional<String> results = input.showAndWait();
+                String pin = results.get();
+                
                 try {
                     if (pin.length() > 0) {
                         accessToken = twitter.getOAuthAccessToken(requestToken, pin);
@@ -134,10 +142,6 @@ public class GetAccessToken {
         } catch (TwitterException te) {
             te.printStackTrace();
             System.out.println("Failed to get accessToken: " + te.getMessage());
-            System.exit(-1);
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-            System.out.println("Failed to read the system input.");
             System.exit(-1);
         }
     }

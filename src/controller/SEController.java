@@ -158,32 +158,11 @@ public class SEController
 	    				});
 		    }
 		});
-		btnTwitterLogin.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent event) {
-				GetAccessToken.login();
-			}
-		});
 	}
 	
-	public void loginToTwitter() {
-
-		try {
-			Parent root = FXMLLoader.load(getClass().getResource("/view/LoginPopup.fxml"));
-			Stage stage = new Stage();
-			Scene scene = new Scene(root,203,125);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			stage.setScene(scene);
-			stage.setTitle("Login");
-			stage.show();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		
-		//GetAccessToken.login();
-	}
-	
-	public void closeCurrentWindow() {
-		((Stage)authButton.getScene().getWindow()).close();
+	public void twitterLogin()
+	{
+		GetAccessToken.login();
 	}
 	
 	/**
