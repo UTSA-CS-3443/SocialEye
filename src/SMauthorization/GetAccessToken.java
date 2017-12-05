@@ -117,6 +117,8 @@ public class GetAccessToken {
                 TextInputDialog input = new TextInputDialog();
                 input.setTitle("Twitter Authentication");
                 input.setContentText("Please enter your PIN: ");
+                input.getDialogPane().getStylesheets().add(
+                		GetAccessToken.class.getResource("/controller/application.css").toExternalForm());
                 Optional<String> results = input.showAndWait();
                 String pin = results.get();
                 
