@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 import org.json.JSONException;
 
-import SMauthorization.GetAccessToken;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;

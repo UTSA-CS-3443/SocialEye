@@ -15,7 +15,7 @@
  * 
  * Work has also been modified by Kevin Heston and Brian Le
  */
-package SMauthorization;
+package twitter;
 
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
