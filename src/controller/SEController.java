@@ -73,91 +73,87 @@ public class SEController
 	 */
 	
 	public void onLoginClick() {
-		btnRedditLogin.setOnAction(new EventHandler<ActionEvent>() {
-		    public void handle(ActionEvent event) {
-	    				WebViewBrowser webViewBrowser = new WebViewBrowser();
-	    				Stage browserStage = new Stage();
-	    				webViewBrowser.start(browserStage);
-	    				browserStage.setOnHiding(new EventHandler<WindowEvent>() {
-	    				    @Override
-	    				    public void handle(WindowEvent event) {
-		    					try {
-									loginid.setText("Logged in as: " + RedditGet.username(RedditGet.access_token));
-									ArrayList<RedditThread> frontpage = RedditGet.frontpage(RedditGet.access_token);
-									for(RedditThread current: frontpage) {
-										
-										Pane thread = new Pane();
-										thread.setPrefWidth(715);
-										thread.setPrefHeight(50);
-										thread.setStyle("-fx-border-color: black");
-										
-										Text domain = new Text();
-										domain.setFont(Font.font(10));
-										domain.setFill(Color.LIGHTGRAY);
-										domain.setText(current.getDomain());
-										
-										
-										Hyperlink titlelink = new Hyperlink(current.getTitle());
-										titlelink.setOnAction(new EventHandler<ActionEvent>() {
-										    @Override
-										    public void handle(ActionEvent e) {
-										    	try {
-													Desktop.getDesktop().browse(current.getUrl().toURI());
-												} catch (IOException | URISyntaxException e1) {
-													e1.printStackTrace();
-												}
-										    }
-										});
-										
-										TextFlow title = new TextFlow();
-										title.getChildren().add(titlelink);
-										title.getChildren().add(domain);
-										title.setLayoutX(50);
-										
-										
-										Text author = new Text();
-										author.setFont(Font.font(12));
-										author.setFill(Color.WHITE);
-										author.setText("Submitted by " + current.getAuthor());
-										
-										Hyperlink commentLink = new Hyperlink(current.getNum_comments() + " comments");
-										commentLink.setOnAction(new EventHandler<ActionEvent>() {
-											@Override
-											public void handle(ActionEvent e) {
-												try {
-													Desktop.getDesktop().browse(current.getPermalinkURL().toURI());
-												} catch (IOException | URISyntaxException e2) {
-													e2.printStackTrace();
-												}
-											}
-										});
-										
-										TextFlow comment = new TextFlow();
-										comment.getChildren().add(author);
-										comment.getChildren().add(commentLink);
-										comment.setLayoutY(20);
-										comment.setLayoutX(50);
-										
-										Text score = new Text();
-										score.setFont(Font.font(14));
-										score.setFill(Color.WHITE);
-										score.setText(Integer.toString(current.getScore()));
-										score.setY(25);
-										score.setX(5);
+		WebViewBrowser webViewBrowser = new WebViewBrowser();
+		Stage browserStage = new Stage();
+		webViewBrowser.start(browserStage);
+		browserStage.setOnHiding(new EventHandler<WindowEvent>() {
+			@Override
+			public void handle(WindowEvent event) {
+				try {
+					loginid.setText("Logged in as: " + RedditGet.username(RedditGet.access_token));
+					ArrayList<RedditThread> frontpage = RedditGet.frontpage(RedditGet.access_token);
+					for(RedditThread current: frontpage) {
 
-										thread.getChildren().add(score);
-										thread.getChildren().add(title);
-										thread.getChildren().add(comment);
-										
-										redditVBox.getChildren().add(thread);	
-									}
-		    					} catch (IOException | JSONException e) {
-									e.printStackTrace();
+						Pane thread = new Pane();
+						thread.setPrefWidth(715);
+						thread.setPrefHeight(50);
+						thread.setStyle("-fx-border-color: black");
+
+						Text domain = new Text();
+						domain.setFont(Font.font(10));
+						domain.setFill(Color.LIGHTGRAY);
+						domain.setText(current.getDomain());
+
+
+						Hyperlink titlelink = new Hyperlink(current.getTitle());
+						titlelink.setOnAction(new EventHandler<ActionEvent>() {
+							@Override
+							public void handle(ActionEvent e) {
+								try {
+									Desktop.getDesktop().browse(current.getUrl().toURI());
+								} catch (IOException | URISyntaxException e1) {
+									e1.printStackTrace();
 								}
-	    				    }
-	    				});
-		    }
-		});
+							}
+						});
+
+						TextFlow title = new TextFlow();
+						title.getChildren().add(titlelink);
+						title.getChildren().add(domain);
+						title.setLayoutX(50);
+
+
+						Text author = new Text();
+						author.setFont(Font.font(12));
+						author.setFill(Color.WHITE);
+						author.setText("Submitted by " + current.getAuthor());
+
+						Hyperlink commentLink = new Hyperlink(current.getNum_comments() + " comments");
+						commentLink.setOnAction(new EventHandler<ActionEvent>() {
+							@Override
+							public void handle(ActionEvent e) {
+								try {
+									Desktop.getDesktop().browse(current.getPermalinkURL().toURI());
+								} catch (IOException | URISyntaxException e2) {
+									e2.printStackTrace();
+								}
+							}
+						});
+
+						TextFlow comment = new TextFlow();
+						comment.getChildren().add(author);
+						comment.getChildren().add(commentLink);
+						comment.setLayoutY(20);
+						comment.setLayoutX(50);
+
+						Text score = new Text();
+						score.setFont(Font.font(14));
+						score.setFill(Color.WHITE);
+						score.setText(Integer.toString(current.getScore()));
+						score.setY(25);
+						score.setX(5);
+
+						thread.getChildren().add(score);
+						thread.getChildren().add(title);
+						thread.getChildren().add(comment);
+
+						redditVBox.getChildren().add(thread);	
+					}
+				} catch (IOException | JSONException e) {
+					e.printStackTrace();
+				}
+			}});
+
 	}
 	
 	public void twitterLogin()
