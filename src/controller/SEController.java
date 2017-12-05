@@ -156,6 +156,9 @@ public class SEController
 
 	}
 	
+	/**
+	 * starts the twitter login process
+	 */
 	public void twitterLogin()
 	{
 		GetAccessToken.login();
