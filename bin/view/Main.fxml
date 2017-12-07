@@ -32,15 +32,6 @@
                      <items>
                         <ToolBar prefHeight="48.0" prefWidth="621.0">
                           <items>
-                            <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="41.0" textAlignment="CENTER"> 
-                            	<graphic>
-                            		<ImageView fitHeight="26.0" fitWidth="26.0">
-                            			<image>
-                            				<Image url="@../avatar/refresh-icon-19.png" />
-                            			</image>
-                            		</ImageView>
-                            	</graphic>
-                            </Button>
                               <Button fx:id="btnRedditLogin" mnemonicParsing="false" onAction="#onLoginClick" prefHeight="38.0" prefWidth="87.0" text="Reddit Login">
                                  <font>
                                     <Font name="Helvetica Neue" size="12.0" />

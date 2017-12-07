@@ -41,6 +41,15 @@ import reddit.WebViewBrowser.Browser;
 import twitter.*;
 import twitter4j.TwitterException;
 
+/**
+ * Manages communication between the GUI and the rest of the program
+ * 
+ * @author Brian Le
+ * @author Kevin Heston
+ * @author Devin Nguyen
+ * @author Alex Shi
+ *
+ */
 public class SEController 
 {
 	@FXML
@@ -188,6 +197,7 @@ public class SEController
 	 * 
 	 * 
 	 * @author Brian Le
+	 * @author Kevin Heston
 	 */
 	public void onTabSelect() 
 	{

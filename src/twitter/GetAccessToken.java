@@ -33,7 +33,14 @@ import java.util.Properties;
 
 import javafx.scene.control.TextInputDialog;
 
-
+/**
+ * Acquires an access token used to communicate with the Twitter API
+ * 
+ * @author Yusuke Yamamoto
+ * @author Brian Le
+ * @author Kevin Heston
+ *
+ */
 public class GetAccessToken {
 
 	// This is the consumer key for our twitter app Social Eye

@@ -27,6 +27,7 @@ import twitter4j.TwitterFactory;
  * explanation needed.
  * 
  * @author Brian Le
+ * @author Kevin Heston
  *
  */
 public class twitter 
@@ -78,6 +79,9 @@ public class twitter
 	 * This might change soon
 	 *  
 	 * @author Brian
+	 * @author Kevin Heston
+	 * @param trendsBox the TextFlow that we are adding the hyperlinked trends too
+	 * @param locationID the location ID we want to find trends for
 	 */	
 	public void Top10Trends(TextFlow trendsBox, int locationID) throws TwitterException 
 	{
@@ -107,7 +111,7 @@ public class twitter
 	        		//create new hyperlink based on trend name
         			Hyperlink test = new Hyperlink(trend.getName());
         			
-        			//determine whether trend is a hashtag or a noun and opens appropriate webpage
+        			//determine whether trend is a hashtag or a noun and assigne the appropriate URI
 	        		if(trend.getName().indexOf('#') != -1)
 	        		{
 	        			test.setOnAction(new EventHandler<ActionEvent>() {
@@ -117,12 +121,10 @@ public class twitter
 	        					{
 	        						desktop.browse(new URI("https://twitter.com/hashtag/"+test.getText().replace("#", "")));
 	        					} catch (IOException h)
-	        					{
-	        						// TODO Auto-generated catch block
+	        					{	        						// TODO Auto-generated catch block
 	        						h.printStackTrace();
 	        					} catch (URISyntaxException p)
 	        					{
-	        						// TODO Auto-generated catch block
 	        						p.printStackTrace();
 	        					}
 	        				}
@@ -141,11 +143,9 @@ public class twitter
 	        							URLEncoder.encode(test.getText(), "utf-8")+"&src=tren"));
 	        					} catch (IOException h)
 	        					{
-	        						// TODO Auto-generated catch block
 	        						h.printStackTrace();
 	        					} catch (URISyntaxException p)
 	        					{
-	        						// TODO Auto-generated catch block
 	        						p.printStackTrace();
 	        					}
 	        				}
@@ -206,7 +206,6 @@ public class twitter
 		{
 			// Display an error message and exit the program
 			System.out.println("Error attempting to get the timeline.");
-			System.exit(-1);
 		}		
 	}
 }
